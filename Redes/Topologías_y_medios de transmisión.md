@@ -56,6 +56,10 @@ en la práctica  se usa la malla parcial, donde cada equipo se conecta solo con 
 
 Internet en su conjunto funciona bajo este principio. Hoy es el estándar para cualquier infraestructura donde la disponibilidad continua sea indispensable.
 
+La topología malla se utilizó principalmente como un método de defensa.
+Se podría pensar como una topología que
+conecta todos con todos. Su ventaja es alta tolerancia a fallos
+
 # Topología híbrida
 
 La topología híbrida combina dos o más tipos de topología dentro de la misma red. Su objetivo es tomar las ventajas de cada una y aplicarlas donde más convienen.
@@ -69,6 +73,9 @@ Cada vez que un dispositivo envía información a otro, necesita un camino para 
 
 Es un canal por donde viajan los datos en forma de señales  eléctricas, pulsos de luz u sondas de radio.
 
+los medios de transmisión eh se dividen principalmente en dos grandes tipos, que son los cableados o los físicos y los
+inalámbricos.
+
 ### medios guiados
 - cable de cobre
 - fibra optica
@@ -78,3 +85,4 @@ Es un canal por donde viajan los datos en forma de señales  eléctricas, pulsos
 - celulares
 
 La elección del medio determina la velocidad, la distancia y la resistencia a interferencias de toda la red. 
+
