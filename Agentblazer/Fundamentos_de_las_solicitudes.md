@@ -26,5 +26,11 @@ Hacer que las plantillas sean específicas las hace efectivas. Otra forma de dec
 
 Si desea usar datos de una consulta SOQL o una API externa en su solicitud, considere el uso de Apex. Apex también es eficaz si desea generar un archivo JSON con formato correcto o filtrar datos de manera programática.
 
+# Crear una plantilla de solicitud de generación de campos
+
+Una plantilla de solicitudes de generación de campos es un tipo específico de plantilla de solicitud que está diseñada para devolver una respuesta generada de un LLM a un campo específico en un registro. Las plantillas de solicitud de generación de campos tienen una relación directa con los campos de registro. 
+
+# Crear una plantilla de solicitud de generación de campos
+Con la ayuda de Flow Builder, los administradores pueden crear flujos de solicitud desencadenados por plantillas para incorporar lógica compleja a las plantillas de solicitud sin escribir código.
 
 
