@@ -11,4 +11,14 @@ Después de tomar decisiones dirigidas por datos, el agente pasa sin dificultade
 
 Con el tiempo, el agente aprende continuamente de cada interacción y se adapta para mejorar su desempeño a futuro. Analiza comentarios y resultados para perfeccionar su algoritmo y proceso de toma de decisiones y, así, satisfacer las necesidades del cliente.
 
+## La prioridad principal es la seguridad
 
+- Definir límites claros: Establezca límites claros de lo que pueden hacer los agentes autónomos. Con restricciones claras, se evita el uso indebido y garantiza que los agentes operen dentro de los límites éticos y de seguridad.
+- Implementar medidas de seguridad sólidas: Use código, almacenamiento de datos seguro, controles de acceso y auditorías de seguridad periódicas para proteger la información de los clientes. Asegúrese de que los agentes cumplen con las leyes de protección de datos.
+- Supervisar y auditar: Supervise de forma periódica el desempeño de los agentes autónomos y audite sus acciones. De esta manera, puede detectar a tiempo errores o comportamiento inadecuado y realizar ajustes según sea necesario.
+- Integrar la supervisión humana
+- Garantizar la transparencia: Su organización debe ser transparente con los clientes en cuanto a cómo usa los agentes autónomos. Deben saber cuándo están interactuando con un agente autónomo y tener la opción de hablar con un representante humano de ser necesario.
+- Probar de forma exhaustiva: Antes de implementar los agentes autónomos, pruébelos de forma exhaustiva para identificar posibles problemas y solucionarlos. 
+- Aprender y mejorar continuamente
+
+# Cómo los agentes autónomos mejoran su negocio
