@@ -15,15 +15,30 @@ El Switch aprende la dirección Mac de cada dispositivo conectado a sus puertos 
 
 Cuando recibe una trama, consulta esa tabla y la envía exclusivamente al puerto donde está el destinatario, sin interferir con los demás dispositivos(elimina las colisiones y permite que múltiples comunicaciones ocurran en paralelo).
 
+Tabla mac por puerto, sin colisiones(full duplex) y es el estandar actual
+
+hay algunos que ya manejan direcciones tanto fisicas como logicas
+
 ## Router
 Capa 3 del modelo OSI
+
+maneja direcciones fisicas pero principalmente, direcciones logicas
+
+tiene 2 elementos complejos dentro, uno fisico y otro logico, especifico ara manejar redes de diferentes tecnologia(interconecta redes distintas).
 
 Se encarga de interconectar redes distintas, incluyendo la conexión de una red local con internet.
 
 Toma decisiones de enrutamiento basadas en las direcciones IP de destino y en tablas de enrutamiento(manuales o dinamicas).
 
+![alt text](image-7.png)
+
 # Firewall
 Un firewall es un sistema de seguridad que monitorea y controla el tráfico de red entrante y saliente según un conjunto de reglas predefinidas. Su objetivo principal es proteger una red interna de accesos no autorizados provenientes del exterior sin bloquear el tráfico legítimo.
+
+Tambien de que el interior consulte paginas o accesos no permitidos 
+
+![alt text](image-8.png)
+
 
 ### Tipos
 El firewall de filtrado de paquetes examina cada paquete de red de forma individual y decide si permitir o bloquear según la IP de origen, la IP de destino, el protocolo y el puerto.

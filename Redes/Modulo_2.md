@@ -37,3 +37,26 @@ Entonces, cuando llegan los invitados, se les asigna una un direccionamiento de 
 
 Le había habíamos platicado que el broadcast es un elemento de multidifusión o la difusión que se traduce el broadcast es precisamente esa conexión por medio de la cual nosotros estamos replicando  los mensajes dentro de la propia red, dentro de una red local. El broadcast pues es dañino si no se administra de manera correcta. en una red one. Nosotros necesitamos de esa multidifusión precisamente para que llegue a su destino por el mejor camino o por alguno de los caminos disponibles.
 
+# ejercicio de calcular cuantas redes
+![alt text](image-4.png)
+![alt text](image-5.png)
+
+# DHCP(proceso dora)
+![alt text](image-6.png)
+
+al conectarnos a una red sea privada o publica, dhcp nos va a asignar una direccion y una vez logrado podremos tener el redireccionamiento a otros sitios, nos da ip, mascara, dns y otros valores internos.
+
+lo anterior son requerimientos necesarios para poder conectarnos y navegar en internet
+
+hay direcciones limitadas en cada DHCP, a veces el no poder conectarte a una red se debe a que estan todas ocupadas, tambien es buena practica limitar el tiempo que un usuario puede tener una direccion dentro de la red, esta se puede quitar y renovar, aunque lo comun es que no haya limitciones de tiempo, es decir el usuario puede estar conectado eternamente o hasta que se descinecte y ss libere la direccion para alguien mas.
+
+# DNS(resolicion de nombres)
+tabla de redireccionamiento, tiene ip y nombres de paginas, resuelve las direcciones
+
+# WI-FI
+![alt text](image-9.png)
+
+# Servicios de red fundamentales
+![alt text](image-10.png)
+
+siempre usar una version cifrada
