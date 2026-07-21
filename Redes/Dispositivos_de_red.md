@@ -55,9 +55,10 @@ Los APS se conectan al switch de la red por cable y los dispositivos móviles se
 La seguridad de una red Wi-Fi es crítica porque la señal inalámbrica puede interceptarse sin acceso físico a la infraestructura.
 
 # Buenas prácticas de seguridad Wi-Fi
-Usar contraseñas de al menos 12 caracteres con combinación de letras, números y símbolos.
-Cambiar el SSID por defecto del router para no revelar el fabricante.
-Desactivar WPS Wi-Fi protected setup, ya que tiene vulnerabilidades conocidas.
-Usar WPA3 cuando todos los dispositivos losoporten. En caso contrario, WPA2.
-Separar la red de invitados de la red principal mediante SSID independiente. 
-Actualizar el firmware del router periódicamente.
+-  Usar contraseñas de al menos 12 caracteres con combinación de letras, números y símbolos.
+-  Cambiar el SSID por defecto del router para no revelar el fabricante.
+-  Desactivar WPS Wi-Fi protected setup, ya que tiene vulnerabilidades conocidas.
+-  Usar WPA3 cuando todos los dispositivos losoporten. En caso contrario, WPA2.
+-  Separar la red de invitados de la red principal mediante SSID independiente. 
+-  Actualizar el firmware del router periódicamente.
+
