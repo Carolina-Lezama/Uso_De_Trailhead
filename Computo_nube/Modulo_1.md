@@ -83,9 +83,15 @@ funcion como servicio
 pago por ejecucion, permite ejecutar fragmentos de codigo solo cuando ocurre un evento especifico
 
 ## DaaS
+escritorio como servicio
 
-escritorios virtuales
+escritorios virtuales, ofrece escritorios virtuales donde se pueden acceder desde cualquier lugar solo con internet, todo se ejecuta en los servidores del proveedor
 
 ## DBaaS
+base de datos como servicio
 
-base de datos administrada, menos mantenimiento del usuario
+base de datos administrada, menos mantenimiento del usuario, configurar, operar y escalar la bd sin instalar nada ni gestionar software
+
+# Modelos de implementacion
+![alt text](image-2.png)
+
