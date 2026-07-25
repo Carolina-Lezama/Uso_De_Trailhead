@@ -7,7 +7,7 @@ para multiples usuarios, la infraestructura es compartida, pero cada organizacio
 Exclusiva para una sola organizacion, da mucho mas control, usado principalmente en el manejo de informacion sensible 
 
 ## Multinube
-Infraestructura publica y privada, usada para proteger datos sensibles y los servicios publicos para datos no tan sensibles, es decir, categoriza que es necesario proteger mas
+Utilizar servicios de diferentes provedores segun sus necesidades especificas
 
 ## Nube hibrida
-Utilizar servicios de diferentes provedores segun sus necesidades especificas
+Infraestructura publica y privada, usada para proteger datos sensibles y los servicios publicos para datos no tan sensibles, es decir, categoriza que es necesario proteger mas
