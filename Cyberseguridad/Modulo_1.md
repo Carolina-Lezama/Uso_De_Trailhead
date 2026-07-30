@@ -15,16 +15,19 @@ conjunto de tecnologias, procesos y practicas diseñadas para proteger sistemas,
 - disponibilidad: acceso cuando sea necesario
 
 # Amenazas
-con potencial de causar daño a cualquiera de los principios de la ciberseguridad
+cualquier peligro con potencial de causar daño a cualquiera de los principios de la ciberseguridad
 
-malware
-phising y la suplantacion de la identidad
-ataques de denegacion de servicios(Dos/DDoS)
-amenazas internas
-ffuga y exfiltracion de datos
+- malware
+- phising y la suplantacion de la identidad
+- ataques de denegacion de servicios(Dos/DDoS)
+- amenazas internas
+- fuga y exfiltracion de datos
+
+# Vulnerabilidad
+debilidad o falla que puede ser identificada y explotada por amenazas para causar daño
 
 # Vector de ataque
-medio o ruta utilizado para alcanzar el objetivo
+medio o ruta utilizado para alcanzar el objetivo, usado para explotar una vulnerabilidad y penetrar las defensas
 
 correo electronico
 credenciales debiles o reutilizadas
