@@ -7,3 +7,8 @@
 # Pilares de seguridad de la informacion
 - la gestion de riesgos
 - la proteccion de datos
+
+# Practicas que sostienen la seguridad operativa
+1. monitorear: identificar cuando algo no esta funcionando como deberia
+2. detectar: comparar lo que ocurre con lo que deberia ocurrir
+3. responder
