@@ -12,3 +12,10 @@
 1. monitorear: identificar cuando algo no esta funcionando como deberia
 2. detectar: comparar lo que ocurre con lo que deberia ocurrir
 3. responder
+
+# Seguridad en los dipositivos moviles
+cifrado
+proteccion MFA(factor extra de comprobacion)
+antivirus movil
+red privada virtual 
+gestor de contraseñas
