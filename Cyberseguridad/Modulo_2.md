@@ -14,8 +14,16 @@
 3. responder
 
 # Seguridad en los dipositivos moviles
-cifrado
-proteccion MFA(factor extra de comprobacion)
-antivirus movil
-red privada virtual 
-gestor de contraseñas
+- cifrado
+- proteccion MFA(factor extra de comprobacion)
+- antivirus movil
+- red privada virtual 
+- gestor de contraseñas
+
+# incidente de ciberseguridad
+cualquier evento que comprometa la confidenciabilidad, integridad o disponibilidad de la informacion 
+
+# etapas de monitoreo
+1. contender
+2. preservar
+3. notificar 
