@@ -32,3 +32,5 @@ si no tienen static es variable del objeto
 - || OR
 - ! NOT
 
+# Que es una clase?
+una plantilla o molde para crear objetos, agrupa datos y comportamientos, permiten modelar entidades del mundo real con sus caracterisitcas y comportamientos
