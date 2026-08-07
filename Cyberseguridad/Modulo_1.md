@@ -29,12 +29,12 @@ debilidad o falla que puede ser identificada y explotada por amenazas para causa
 # Vector de ataque
 medio o ruta utilizado para alcanzar el objetivo, usado para explotar una vulnerabilidad y penetrar las defensas
 
-correo electronico
-credenciales debiles o reutilizadas
-software desactualizado
-ingenieria social
-dispositivos extraibles y redes no confiables
-cadena de suministro
+- correo electronico
+- credenciales debiles o reutilizadas
+- software desactualizado
+- ingenieria social
+- dispositivos extraibles y redes no confiables
+- cadena de suministro
 
 # Tipos de hackers
 ![alt text](image.png)
