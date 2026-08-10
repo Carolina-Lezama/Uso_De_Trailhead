@@ -18,3 +18,8 @@ permite trabajar con el lenguaje humano, escrito o hablado.
 
 # aprendizaje profundo
 el sistema analiza los datos a traves de varias capaz
+
+# Cuidado
+los resultados no deben dejarse ciegamente a una inteligencia artificial
+Entre mas complejo, mas costoso sera
+esperamos que el modelo pueda afrontar no solo los datos con los que se entreno, sino situaciones no experadas.
