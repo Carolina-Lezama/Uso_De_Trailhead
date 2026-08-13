@@ -3,63 +3,90 @@
 ## Fase 1: Fundamentos y Modelo de Datos en Salesforce CRM
 Justificación: Salesforce funciona como una base de datos relacional. Antes de que el Agente pueda consultar o modificar información, debemos construir las "tablas" (Objetos) y "columnas" (Campos) donde se almacenarán las líneas de captura, las solicitudes de CFDI y el historial de auditoría.
 
-1.1. Creación de Objetos Personalizados (Custom Objects)
+## 1.1. Creación de Objetos Personalizados (Custom Objects)
 En Salesforce, ve a Setup (Configuración) > Object Manager (Administrador de objetos) > Create > Custom Object.
+
 1.	Objeto Linea_de_Captura__c (Línea de Captura de Pago)
-o	Campo de nombre de objeto: Numero_de_Folio (Text)
-o	Campos personalizados:
-	Monto__c (Currency)
-	Estatus__c (Picklist: Pendiente, Pagado, Procesado, Cancelado)
-	Fecha_de_Pago__c (Date/Time)
-	Servicio__c (Text: ej. "Licencia de Conducir", "Predial")
-	Ciudadano__c (Lookup al objeto estándar Contact o Account)
+- Campo de nombre de objeto: Numero_de_Folio (Text)
+- Campos personalizados:
+- Monto__c (Currency)
+- Estatus__c (Picklist: Pendiente, Pagado, Procesado, Cancelado)
+- Fecha_de_Pago__c (Date/Time)
+- Servicio__c (Text: ej. "Licencia de Conducir", "Predial")
+- Ciudadano__c (Lookup al objeto estándar Contact o Account)
+
+
 2.	Objeto Solicitud_CFDI__c (Solicitud de Facturación)
-o	Campo de nombre de objeto: Numero_Solicitud (Auto-Number: CFDI-{0000})
-o	Campos personalizados:
-	RFC__c (Text)
-	Regimen_Fiscal__c (Text)
-	Codigo_Postal__c (Text)
-	Uso_CFDI__c (Text)
-	Correo_Notificacion__c (Email)
-	Estatus_Factura__c (Picklist: Solicitado, En Proceso, Emitido, Rechazado)
-	Linea_de_Captura__c (Lookup a Linea_de_Captura__c)
+- Campo de nombre de objeto: Numero_Solicitud (Auto-Number: CFDI-{0000})
+- Campos personalizados:
+- RFC__c (Text)
+- Regimen_Fiscal__c (Text)
+- Codigo_Postal__c (Text)
+- Uso_CFDI__c (Text)
+- Correo_Notificacion__c (Email)
+- Estatus_Factura__c (Picklist: Solicitado, En Proceso, Emitido, Rechazado)
+- Linea_de_Captura__c (Lookup a Linea_de_Captura__c)
+
+
 3.	Objeto Log_de_Auditoria_IA__c (Trazabilidad y Event Logging)
-o	Campo de nombre de objeto: Nombre_Log (Auto-Number: LOG-{0000})
-o	Campos personalizados:
-	Accion_Ejecutada__c (Text: ej. "Consulta de Estatus", "Bloqueo de Doble Pago", "Creación CFDI")
-	Detalle__c (Long Text Area: Descripción detallada de lo ejecutado)
-	Id_Ciudadano__c (Text o Lookup a Contact)
-	Fecha_Hora__c (Date/Time)
-	Agente_Invocador__c (Text: "Agentforce Bot")
-Fase 2: Capa de Inteligencia y Conocimiento (Knowledge RAG)
+- Campo de nombre de objeto: Nombre_Log (Auto-Number: LOG-{0000})
+- Campos personalizados:
+- Accion_Ejecutada__c (Text: ej. "Consulta de Estatus", "Bloqueo de Doble Pago", "Creación CFDI")
+- Detalle__c (Long Text Area: Descripción detallada de lo ejecutado)
+- Id_Ciudadano__c (Text o Lookup a Contact)
+- Fecha_Hora__c (Date/Time)
+- Agente_Invocador__c (Text: "Agentforce Bot")
+
+
+## Fase 2: Capa de Inteligencia y Conocimiento (Knowledge RAG)
+
 Justificación: Cumple con la Dimensión 1 (Knowledge RAG). El agente no debe inventar políticas del gobierno. Cargarás artículos oficiales para que el LLM responda basándose únicamente en esta base de conocimientos.
-2.1. Habilitar Salesforce Knowledge
+
+## 2.1. Habilitar Salesforce Knowledge
+
 1.	Ve a Setup > Knowledge Settings y marca la casilla Enable Knowledge.
+
+
 2.	Asigna la licencia de usuario Knowledge a tu usuario en Setup > Users > tu usuario > Knowledge User (marcar).
-2.2. Creación e Indexación de Artículos de Conocimiento
+
+
+## 2.2. Creación e Indexación de Artículos de Conocimiento
+
 Crea tres artículos de conocimiento en Knowledge App:
+
 1.	Artículo 1: Politica_Pagos_No_Reembolso
 o	Contenido: "De acuerdo con el Artículo 45 del Código Fiscal del Estado, todo pago realizado a líneas de captura oficiales no es sujeto a reembolso directo por canal digital. Si realiza un pago duplicado, deberá iniciar un trámite presencial en la Secretaría de Finanzas."
 2.	Artículo 2: Requisitos_Emision_CFDI
 o	Contenido: "Para la emisión del Comprobante Fiscal Digital por Internet (CFDI) se requiere: RFC activo, Código Postal del domicilio fiscal, Régimen Fiscal y Uso de CFDI. La solicitud debe realizarse dentro del mismo mes en que se efectuó el pago."
 3.	Artículo 3: Tiempos_Acreditacion_Servicios
 o	Contenido: "Los pagos realizados en ventanilla bancaria tardan de 24 a 48 horas hábiles en reflejarse. Los pagos en línea mediante tarjeta de crédito o débito se acreditan de forma inmediata."
-2.3. Configuración de Agent Search / Data Cloud
+
+## 2.3. Configuración de Agent Search / Data Cloud
 1.	Publica los tres artículos (Publish).
+
+
 2.	Asegúrate de que el perfil del Agente tenga acceso de lectura a Knowledge.
-Fase 3: Capa de Acción y Trazabilidad (Flow Builder)
+
+
+## Fase 3: Capa de Acción y Trazabilidad (Flow Builder)
 Justificación: Cumple con la Dimensión 2 (Agentic Flows) y la Dimensión 3 (Event Logging). Los Flows son scripts visuales (pro-code/no-code) que el agente ejecuta como herramientas cuando decide tomar una acción.
-3.1. Flow 1: Verificar Estatus y Bloquear Pago Duplicado (Autolaunched Flow)
+
+## 3.1. Flow 1: Verificar Estatus y Bloquear Pago Duplicado (Autolaunched Flow)
 •	Propósito: Recibir una línea de captura, revisar si ya está pagada y evitar que el ciudadano vuelva a pagar.
+
 •	Entradas (Variables con "Available for input"): var_NumeroFolio (Text).
+
 •	Pasos del Flow:
 1.	Get Records: Buscar en Linea_de_Captura__c donde Numero_de_Folio sea igual a var_NumeroFolio.
 2.	Decision:
-	¿Existe y está Pagado? -> Asignar mensaje de salida: "El folio X ya cuenta con un pago verificado el día Y. No vuelva a realizar el pago."
-	¿Existe y está Pendiente? -> Asignar mensaje de salida: "El folio X está listo para pago."
-	¿No existe? -> Asignar mensaje de salida: "El folio no fue encontrado en el sistema."
+- 	¿Existe y está Pagado? -> Asignar mensaje de salida: "El folio X ya cuenta con un pago verificado el día Y. No vuelva a realizar el pago."
+- 	¿Existe y está Pendiente? -> Asignar mensaje de salida: "El folio X está listo para pago."
+- 	¿No existe? -> Asignar mensaje de salida: "El folio no fue encontrado en el sistema."
 3.	Create Record (Event Logging Integrado): Crear un registro en Log_de_Auditoria_IA__c guardando la acción: "Consulta de Folio: " + var_NumeroFolio.
+
 •	Salidas (Variables con "Available for output"): var_MensajeRespuesta (Text), var_EstatusPago (Text).
+
+
 3.2. Flow 2: Registrar Solicitud de CFDI (Autolaunched Flow)
 •	Propósito: Recibir los datos fiscales extraídos por el agente y crear el registro de facturación en la BD.
 •	Entradas: var_Folio, var_RFC, var_CP, var_Regimen, var_Correo.
