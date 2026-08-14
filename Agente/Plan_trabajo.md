@@ -87,32 +87,40 @@ Justificación: Cumple con la Dimensión 2 (Agentic Flows) y la Dimensión 3 (Ev
 •	Salidas (Variables con "Available for output"): var_MensajeRespuesta (Text), var_EstatusPago (Text).
 
 
-3.2. Flow 2: Registrar Solicitud de CFDI (Autolaunched Flow)
-•	Propósito: Recibir los datos fiscales extraídos por el agente y crear el registro de facturación en la BD.
-•	Entradas: var_Folio, var_RFC, var_CP, var_Regimen, var_Correo.
-•	Pasos del Flow:
+## 3.2. Flow 2: Registrar Solicitud de CFDI (Autolaunched Flow)
+- Propósito: Recibir los datos fiscales extraídos por el agente y crear el registro de facturación en la BD.
+- Entradas: var_Folio, var_RFC, var_CP, var_Regimen, var_Correo.
+- Pasos del Flow:
 1.	Get Records: Validar que la línea de captura existe y su estatus sea 'Pagado'.
 2.	Decision:
-	Si NO está pagado: Regresar error "No se puede generar CFDI para un pago no verificado".
-	Si está pagado:
-	Create Record: Insertar en Solicitud_CFDI__c con los datos recolectados.
-	Update Record: Cambiar estatus de Linea_de_Captura__c a 'Procesado'.
-	Create Record (Event Logging): Insertar en Log_de_Auditoria_IA__c con la nota "CFDI Creado exitosamente para el RFC " + var_RFC.
-•	Salidas: var_ResultadoCFDI (Text), var_NumeroSolicitudCFDI (Text).
-Fase 4: Configuración del Agente en Agentforce (Agent Builder)
+- Si NO está pagado: Regresar error "No se puede generar CFDI para un pago no verificado".
+- Si está pagado:
+- Create Record: Insertar en Solicitud_CFDI__c con los datos recolectados.
+- Update Record: Cambiar estatus de Linea_de_Captura__c a 'Procesado'.
+- Create Record (Event Logging): Insertar en Log_de_Auditoria_IA__c con la nota "CFDI Creado exitosamente para el RFC " + var_RFC.
+- 	Salidas: var_ResultadoCFDI (Text), var_NumeroSolicitudCFDI (Text).
+
+
+## Fase 4: Configuración del Agente en Agentforce (Agent Builder)
+
 Justificación: Es la "capa cerebral". Aquí se le enseña al agente cómo razonar mediante intenciones (Topics), qué reglas seguir (Instructions) y qué herramientas usar (Actions).
-4.1. Acceso a Agent Builder
+
+## 4.1. Acceso a Agent Builder
 1.	En Setup, busca Agents (o Agent Studio / Agent Builder).
 2.	Selecciona New Agent > Service Agent (o Agente de Servicio Personalizado).
 3.	Asigna el nombre: Agente_Atencion_Ciudadana_Puebla.
-4.2. Definición del Topic 1: Gestion_de_Pagos_y_Folios
-•	Classification Description: "Úsalo cuando el usuario pregunte sobre el estatus de su pago, desee saber si su línea de captura fue acreditada o intente pagar de nuevo un servicio."
-•	Instructions (Instrucciones del Agente):
-o	"Solicita siempre al usuario su número de línea de captura (folio de 24 dígitos o identificador único)."
-o	"Una vez obtenido el folio, invoca la acción 'Verificar Estatus de Pago'."
-o	"Si la respuesta indica que el folio ya está PAGADO, advierte expresamente al usuario que no debe realizar otro pago porque no existen reembolsos digitales."
-o	"Nunca adivines el estatus de un pago sin haber ejecutado la acción."
-•	Actions vinculadas: Asignar el Flow Verificar Estatus y Bloquear Pago Duplicado.
+
+
+## 4.2. Definición del Topic 1: Gestion_de_Pagos_y_Folios
+- 	Classification Description: "Úsalo cuando el usuario pregunte sobre el estatus de su pago, desee saber si su línea de captura fue acreditada o intente pagar de nuevo un servicio."
+- 	Instructions (Instrucciones del Agente):
+- 	"Solicita siempre al usuario su número de línea de captura (folio de 24 dígitos o identificador único)."
+- 	"Una vez obtenido el folio, invoca la acción 'Verificar Estatus de Pago'."
+- 	"Si la respuesta indica que el folio ya está PAGADO, advierte expresamente al usuario que no debe realizar otro pago porque no existen reembolsos digitales."
+- 	"Nunca adivines el estatus de un pago sin haber ejecutado la acción."
+- 	Actions vinculadas: Asignar el Flow Verificar Estatus y Bloquear Pago Duplicado.
+
+
 4.3. Definición del Topic 2: Facturacion_y_CFDI
 •	Classification Description: "Úsalo cuando el usuario requiera la emisión de su comprobante fiscal, factura o CFDI sobre un trámite realizado."
 •	Instructions:
@@ -121,6 +129,8 @@ o	"Consulta los artículos de Knowledge sobre requisitos de CFDI si el usuario e
 o	"Llama a la acción 'Registrar Solicitud de CFDI' únicamente cuando tengas los 4 datos obligatorios."
 o	"Muestra al usuario el número de solicitud de CFDI generado como confirmación."
 •	Actions vinculadas: Asignar el Flow Registrar Solicitud de CFDI.
+
+
 4.4. Reglas de Inviolabilidad (Guardrails / System Instructions)
 En la sección System Instructions (Instrucciones Generales del Agente), agrega estas reglas globales:
 "1. No generes información financiera ni simules pagos sin consultar la base de datos."
