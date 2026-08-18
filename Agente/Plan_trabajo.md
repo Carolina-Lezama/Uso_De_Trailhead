@@ -184,8 +184,8 @@ Qué debes verificar en la respuesta:
 - Comportamiento del agente: La IA te solicitará secuencialmente o en conjunto los datos faltantes: Folio de pago, RFC, Código Postal y Correo electrónico.
 - Segunda interacción: Al enviarle datos ficticios (ej. Folio: 12345, RFC: XAXX010101000, CP: 72000, Correo: test@example.com), debe ejecutar la acción Registrar Solicitud de CFDI y devolver el número de confirmación.
 
-
 ## Escenario de Prueba 3 – Escalamiento a Atención Humana
+
 Prompt de entrada:
 
 "Necesito hablar urgentemente con una persona, mi caso tiene una anomalía de saldo."
@@ -200,34 +200,26 @@ Qué debes verificar en la respuesta:
 Justificación: Garantiza la solidez antes de la presentación. Permite verificar la ejecución paso a paso del motor Atlas.
 
 ## 6.1. Ejecución de Matriz de Pruebas en Agent Builder
+
 Escenario de Prueba Entrada del Usuario Comportamiento Esperado de Atlas
 
-### Prueba 1: 
+### Prueba 1:
+
 Grounding "¿Puedo solicitar el reembolso de un pago si me equivoqué?" Clasifica a Knowledge RAG. Responde que NO hay reembolsos citando el artículo oficial.
 
+### Prueba 2: Prevención Duplicados
 
-### Prueba 2: Prevención Duplicados 
 "Quiero pagar mi folio FOL-1001 de nuevo" Invoca Flow 1. Detecta estado 'Pagado'. Alerta al usuario y bloquea la acción.
 
-### Prueba 3: Facturación Completa 
+### Prueba 3: Facturación Completa
+
 "Hola, quiero solicitar la factura CFDI de mi pago. Mi folio es 123456789012345678901234, RFC XAXX010101000, CP 72000, correo factura.exitosa@ejemplo.com y régimen 605" Pide RFC, CP y Correo. Al recibirlos, invoca Flow 2. Retorna CFDI-XXXX y crea el Log.
 
-### Prueba 4: Escalamiento 
+### Prueba 4: Escalamiento
+
 "Llevo 4 días con un cobro doble y nadie me resuelve, pásame a un supervisor" Detecta insatisfacción/fuera de alcance. Invoca acción de escalamiento a Omni-Channel.
 
-## 6.2. Auditoría en Log_de_Auditoria_IA__c 
+## 6.2. Auditoría en Log_de_Auditoria_IA\_\_c
 
-8. Tras ejecutar las pruebas, ve al tab del objeto Log de Auditoría IA en Salesforce. 
+8. Tras ejecutar las pruebas, ve al tab del objeto Log de Auditoría IA en Salesforce.
 9. Verifica que existan registros creados en tiempo real con las marcas de tiempo y acciones que el agente ejecutó durante las pruebas.
-
-
-Fase 7: Despliegue en Interfaz Ciudadana y Estrategia de Demo (Pitch)
-Justificación: La solución debe ser presentada a los jueces en un portal funcional. Un sitio web de Experience Cloud simula la ventanilla virtual del gobierno de Puebla.
-7.1. Creación de Portal Ciudadano (Experience Cloud) 10. En Setup, busca Digital Experiences > Settings y actívalo. 11. Crea un nuevo sitio con la plantilla Help Center o Customer Service. 12. Nómbralo: Portal de Trámites y Servicios Puebla. 13. Agrega el componente de Embedded Messaging / Agent Chat en la página de inicio. 14. Publica el sitio (Publish).
-7.2. Estructura del Pitch para los Jueces (Demo de 3 a 5 minutos) 15. Problema Real (30 seg): Presentar la desorganización actual en trámites locales (doble pago sin reembolso, tardanza de 3 días en CFDI, falta de auditoría). 16. Demostración de las 4 Dimensiones (3 min):
-o Capa 1 (RAG): Preguntar por la política de reembolsos (demostrar respuesta grounded sin alucinación).
-o Capa 2 (Acción): Ingresar un folio ya pagado para intentar pagar de nuevo -> El agente lo bloquea ejecutando el Flow.
-o Capa 2 y 3 (CFDI + Logs): Solicitar un CFDI ingresando datos -> Mostrar la creación del registro en Salesforce y el registro automático en el Log_de_Auditoria_IA\_\_c.
-o Capa 4 (Confianza): Simular una queja compleja -> Mostrar el escalamiento fluido a Omni-Channel. 17. Impacto en el Negocio/Gobierno (30 seg): Reducción de carga operativa del 80% en ventanillas de finanzas y cero cobros duplicados no rastreados.
-Fase 8: Funcionalidades Opcionales (Solo si sobra tiempo)
-Justificación: Tareas secundarias que no forman parte de las 4 dimensiones principales. Solo deben abordarse cuando la Fase 7 esté 100% probada. 18. Voz (Service Cloud Voice / Speech-to-Text): Habilitar el módulo de dictado de voz nativo del navegador en la ventana de chat del portal para permitir accesibilidad ciudadana por voz. 19. App Móvil Externa / Mobile Publisher: Envolver la comunidad de Experience Cloud en una vista responsiva accesible mediante contenedor móvil web.

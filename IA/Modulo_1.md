@@ -29,3 +29,19 @@ el sistema analiza los datos a traves de varias capaz
 - esperamos que el modelo pueda afrontar no solo los datos con los que se entreno, sino situaciones no experadas.
 - el aprendizaje no supervisado, requiere datos al igual que el aprendizaje supervisado, solo con la diferencia de que estos datos no estan etiquetados
 - cualquier resultado debe ser revisado y evaluado por criterio humano
+
+# AI generativa
+sistemas capaces de crear contenido nuevo, a partir de indicaciones en lenguaje naturla, son capaces de hacerlos a partir de patrones aprendidos por grandes cantidades de informacion.
+
+el resultado debe contextualizarse  y revisarse
+
+## Tipos de contenido generado
+- texto
+- imagen
+- audio
+- video/codigo
+
+## Prompt efectivo
+
+![alt text](image.png)
+
