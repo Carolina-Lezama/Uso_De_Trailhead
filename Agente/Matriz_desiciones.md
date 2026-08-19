@@ -15,11 +15,104 @@
 
 # Plan de trabajo para el PASO 1
 
-revisar el plan de trabjo
-problemas que debes decirle a la ia en tu siguiente prompt:
+## Paso 1.1: Configuración de la Página de Detalle de Solicitud_CFDI\_\_c
 
-necesitamos re elaborar el plan de trabajo
-en el log del CFDI aunque se crea, muestra nombre y detalles de la solicitud, no se marca que ciudadano lo realizo, tampoco ninguno de los datos que se le pidio al usuario antes de hacer la solicitud
+- Por qué corregirlo: En la normativa fiscal del SAT (CFDI 4.0), el Uso del CFDI es un campo obligatorio (ej. G03 - Gastos en general o CP01 - Sin efectos fiscales). Dejarlo vacío invalida el registro para timbrado.
+
+- Cómo solucionarlo: Modifica la instrucción en las acciones del agente para que solicite explícitamente el Uso de CFDI, o tambien configuraremos una predeterminada(si no se proporciona una el agente debe preguntar si continua con CP01 - Sin efectos fiscales como Uso del CFDI)
+
+## PARTE 2: Ajuste en el Agente de Agentforce
+
+- Objetivo: Dictar las reglas de interacción conversacional para que el agente pida el dato o sugiera el valor por defecto.
+- Entra a Configuración (Setup) > Agentforce Studio / Agentes (Agents).
+- Abre tu agente conversacional y entra al Tópico/Acción (Topic / Action) responsable de la gestión de facturas CFDI (ej. Facturación y CFDI).
+- Entra a editar las Instrucciones (Instructions) del Tópico o de la Acción de creación de CFDI y actualiza las reglas con el siguiente texto:
+
+## PARTE 3: Visualizacion
+
+- Entra a Configuración (Setup) > Gestor de Objetos (Object Manager) > Solicitud_CFDI\_\_c.
+  Dirígete a Diseños de página (Page Layouts).
+
+Organiza los campos en dos secciones claras:
+
+- Sección 1: Información General del Trámite (Linea_de_Captura**c, Estatus_Emision**c, Fecha/Hora).
+- Sección 2: Datos FiscalesExtraídos por IA (RFC**c, Codigo_Postal**c, Regimen_Fiscal**c, Uso_CFDI**c, Correo_Electronico\_\_c).
+- Entra a Páginas de registros Lightning (Lightning Record Pages) para Solicitud_CFDI\_\_c, activa un diseño de 2 columnas con panel de aspectos destacados (Highlights Panel) y guarda/activa como predeterminado de la organización.
+
+## PARTE 4: Configurar la Página de Registro Lightning
+
+- En el menú lateral izquierdo de tu pantalla, haz clic en Páginas de registros Lightning (está justo debajo de Formatos de página).
+- Haz clic en el botón Nuevo.
+- Selecciona Página de registro y haz clic en Siguiente.
+- Completa la información inicial:
+- Etiqueta: Página de Solicitud CFDI
+- Objeto: Selecciona Solicitud CFDI
+- Haz clic en Siguiente.
+- Selecciona la plantilla: Encabezado y dos columnas (o Header and Two Columns) y haz clic en Finalizar.
+- Agregar componentes en el lienzo:
+- En el menú de componentes de la izquierda, busca Panel de aspectos destacados (Highlights Panel) y arrástralo a la región superior (el Encabezado).
+- Busca el componente Detalles del registro (Record Detail) y arrástralo a la columna izquierda.
+- (Opcional) En la columna derecha, puedes arrastrar el componente Listas relacionadas (Related Lists).
+- Haz clic en Guardar (esquina superior derecha).
+- Se abrirá una ventana o botón de Activación:
+- Haz clic en Activar.
+- Selecciona la pestaña Predeterminado de la organización (Org Default).
+- Haz clic en Asignar como predeterminado de la organización.
+- Haz clic en Guardar.
+
+## Paso 1.2: Configuración de la Perspectiva del Ejecutivo Humano (Continuidad)
+
+Entra al Gestor de Objetos en Log_de_Auditoria_IA\_\_c.
+
+Asegúrate de que el Diseño de página (Page Layout) muestre de forma prominente:
+
+- Folio_Log\_\_c (Encabezado principal).
+- Motivo_Escalamiento\_\_c (Campo de texto enriquecido/largo bien visible).
+- Correo_Ciudadano**c y Fecha_Hora**c.
+
+📌 Paso 1: Organizar el Formato de Página de Log_de_Auditoria_IA\_\_c
+Vamos a asegurarnos de que la ficha del Log de Auditoría muestre de forma destacada el motivo de escalamiento y el folio.
+
+Entra a Configuración (Setup) > Gestor de Objetos (Object Manager) > Log_de_Auditoria_IA\_\_c.
+
+Entra a Formatos de página (Page Layouts).
+
+Asegúrate de que los campos clave estén bien visibles en dos columnas:
+
+Columna Izquierda: Folio_Log (o Nombre del Log), Motivo_Escalamiento (ej. "cobro doble"), Correo_Ciudadano.
+
+Columna Derecha: Fecha_Hora, Estatus_Atencion, Propietario.
+
+Haz clic en Guardar.
+
+📌 Paso 2: Configurar la Consola de Servicio (Service Console)
+En la esquina superior izquierda de Salesforce, haz clic en el Iniciador de aplicaciones (el icono de 9 puntos o "Waffle").
+
+Busca y selecciona Consola de Servicio (Service Console).
+
+En la barra de navegación superior de la Consola de Servicio, haz clic en la flecha hacia abajo junto a las pestañas y selecciona Editar (o el icono de lápiz) para agregar pestañas.
+
+Agrega el objeto Log_de_Auditoria_IA\_\_c para que sea una de las pestañas principales de navegación.
+
+Abre la pestaña Log_de_Auditoria_IA\_\_c y crea una vista de lista llamada "Escalamientos Pendientes IA" (filtrando por los creados hoy).
+
+📌 Paso 3: Probar el Escenario de Escalamiento
+Probaremos en el chat del Agente el caso de escalamiento por cobro doble y verificaremos en tiempo real cómo aparece en la Consola de Servicio del Ejecutivo.
+
+Dime si estás lista para iniciar el Paso 1 en Log_de_Auditoria_IA\_\_c.
+
+Abre el Iniciador de aplicaciones (App Launcher) y selecciona Consola de Servicio (Service Console).
+
+Agrega el objeto Log_de_Auditoria_IA\_\_c como una pestaña de navegación principal en la consola.
+
+Crea una Vista de lista (List View) llamada "Escalamientos Pendientes IA" filtrada por registros creados hoy.
+
+Paso 1.3: Dashboard de Control Directivo (Potenciador Visual)
+Crea un Informe (Report) sobre Log_de_Auditoria_IA**c agrupado por Motivo_Escalamiento**c.
+
+Crea un Informe (Report) sobre Solicitud_CFDI**c agrupado por Estatus_Emision**c.
+
+Crea un Panel (Dashboard) denominado "Centro de Mando - Atención e Impuestos IA" con 2 componentes visuales (Gráfico de barras y Gráfico de dona).
 
 🟡 URGENCIA 2: La Presentación de Impacto / Pitch Deck (Opción 1)
 Prioridad: ALTA | Tiempo estimado: 5 a 6 horas
