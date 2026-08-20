@@ -70,6 +70,26 @@ Asegúrate de que el Diseño de página (Page Layout) muestre de forma prominent
 - Motivo_Escalamiento\_\_c (Campo de texto enriquecido/largo bien visible).
 - Correo_Ciudadano**c y Fecha_Hora**c.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+Registrar_Log_Escalamiento
+El usuario solicita al agente ser escalado con un empleado humano, ya que el problema sobrepasa sus capacidades
+Extrae EXCLUSIVAMENTE la dirección de correo electrónico (ej. caro@gmail.com). Este campo NO debe contener texto contextual, solo el email.
+Resumen breve de la problemática expresada por el usuario. Queda ESTRICTAMENTE PROHIBIDO incluir la dirección de correo electrónico dentro de esta cadena.
+
+quiero hablar con un humano, tengo un error en mi folio, mi correo es caro@gmail.com
+
 📌 Paso 1: Organizar el Formato de Página de Log_de_Auditoria_IA\_\_c
 Vamos a asegurarnos de que la ficha del Log de Auditoría muestre de forma destacada el motivo de escalamiento y el folio.
 
