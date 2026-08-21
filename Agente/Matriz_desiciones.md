@@ -70,96 +70,110 @@ Asegúrate de que el Diseño de página (Page Layout) muestre de forma prominent
 - Motivo_Escalamiento\_\_c (Campo de texto enriquecido/largo bien visible).
 - Correo_Ciudadano**c y Fecha_Hora**c.
 
+## Paso 1: Organizar el Formato de Página de Log_de_Auditoria_IA\_\_c
 
-
-
-
-
-
-
-
-
-
-
-
-
-Registrar_Log_Escalamiento
-El usuario solicita al agente ser escalado con un empleado humano, ya que el problema sobrepasa sus capacidades
-Extrae EXCLUSIVAMENTE la dirección de correo electrónico (ej. caro@gmail.com). Este campo NO debe contener texto contextual, solo el email.
-Resumen breve de la problemática expresada por el usuario. Queda ESTRICTAMENTE PROHIBIDO incluir la dirección de correo electrónico dentro de esta cadena.
-
-quiero hablar con un humano, tengo un error en mi folio, mi correo es caro@gmail.com
-
-📌 Paso 1: Organizar el Formato de Página de Log_de_Auditoria_IA\_\_c
 Vamos a asegurarnos de que la ficha del Log de Auditoría muestre de forma destacada el motivo de escalamiento y el folio.
 
-Entra a Configuración (Setup) > Gestor de Objetos (Object Manager) > Log_de_Auditoria_IA\_\_c.
-
-Entra a Formatos de página (Page Layouts).
+- Entra a Configuración (Setup) > Gestor de Objetos (Object Manager) > Log_de_Auditoria_IA\_\_c.
+- Entra a Formatos de página (Page Layouts).
 
 Asegúrate de que los campos clave estén bien visibles en dos columnas:
 
-Columna Izquierda: Folio_Log (o Nombre del Log), Motivo_Escalamiento (ej. "cobro doble"), Correo_Ciudadano.
+- Columna Izquierda: Folio_Log (o Nombre del Log), Motivo_Escalamiento (ej. "cobro doble"), Correo_Ciudadano.
+- Columna Derecha: Fecha_Hora, Estatus_Atencion, Propietario.
+- Haz clic en Guardar.
 
-Columna Derecha: Fecha_Hora, Estatus_Atencion, Propietario.
+## Paso 2: Configurar la Consola de Servicio (Service Console)
 
-Haz clic en Guardar.
+- En la esquina superior izquierda de Salesforce, haz clic en el Iniciador de aplicaciones (el icono de 9 puntos o "Waffle").
 
-📌 Paso 2: Configurar la Consola de Servicio (Service Console)
-En la esquina superior izquierda de Salesforce, haz clic en el Iniciador de aplicaciones (el icono de 9 puntos o "Waffle").
+- Busca y selecciona Consola de Servicio (Service Console).
 
-Busca y selecciona Consola de Servicio (Service Console).
+- En la barra de navegación superior de la Consola de Servicio, haz clic en la flecha hacia abajo junto a las pestañas y selecciona Editar (o el icono de lápiz) para agregar pestañas.
 
-En la barra de navegación superior de la Consola de Servicio, haz clic en la flecha hacia abajo junto a las pestañas y selecciona Editar (o el icono de lápiz) para agregar pestañas.
+- Agrega el objeto Log_de_Auditoria_IA\_\_c para que sea una de las pestañas principales de navegación.
 
-Agrega el objeto Log_de_Auditoria_IA\_\_c para que sea una de las pestañas principales de navegación.
+- Abre la pestaña Log_de_Auditoria_IA\_\_c y crea una vista de lista llamada "Escalamientos Pendientes IA" (filtrando por los creados hoy).
 
-Abre la pestaña Log_de_Auditoria_IA\_\_c y crea una vista de lista llamada "Escalamientos Pendientes IA" (filtrando por los creados hoy).
+## Paso 1.3: Dashboard de Control Directivo (Potenciador Visual)
 
-📌 Paso 3: Probar el Escenario de Escalamiento
-Probaremos en el chat del Agente el caso de escalamiento por cobro doble y verificaremos en tiempo real cómo aparece en la Consola de Servicio del Ejecutivo.
+- Crea un Informe (Report) sobre Log_de_Auditoria_IA**c agrupado por Motivo_Escalamiento**c.
+- Crea un Informe (Report) sobre Solicitud_CFDI**c agrupado por Estatus_Emision**c.
+- Crea un Panel (Dashboard) denominado "Centro de Mando - Atención e Impuestos IA" con 2 componentes visuales (Gráfico de barras y Gráfico de dona).
 
-Dime si estás lista para iniciar el Paso 1 en Log_de_Auditoria_IA\_\_c.
+## Parte 3: Panel "Centro de Mando - Atención e Impuestos IA"
 
-Abre el Iniciador de aplicaciones (App Launcher) y selecciona Consola de Servicio (Service Console).
+- Abre la pestaña Paneles (Dashboards) en la barra de navegación y haz clic en Nuevo panel.
 
-Agrega el objeto Log_de_Auditoria_IA\_\_c como una pestaña de navegación principal en la consola.
+Configura los datos iniciales:
 
-Crea una Vista de lista (List View) llamada "Escalamientos Pendientes IA" filtrada por registros creados hoy.
+- Nombre: Centro de Mando - Atención e Impuestos IA
+- Carpeta: Paneles públicos
+- Haz clic en Crear.
 
-Paso 1.3: Dashboard de Control Directivo (Potenciador Visual)
-Crea un Informe (Report) sobre Log_de_Auditoria_IA**c agrupado por Motivo_Escalamiento**c.
+### Agregar Componente 1 (Gráfico de Barras):
 
-Crea un Informe (Report) sobre Solicitud_CFDI**c agrupado por Estatus_Emision**c.
+- Haz clic en + Componente.
+- Selecciona el informe Informe: Escalamientos por Motivo y presiona Seleccionar.
+- En el panel derecho, elige el icono de Gráfico de barras (horizontal o vertical).
+- Verifica que el Eje Y sea Motivo Escalamiento y el Eje X sea Recuento de filas.
+- Haz clic en Agregar.
 
-Crea un Panel (Dashboard) denominado "Centro de Mando - Atención e Impuestos IA" con 2 componentes visuales (Gráfico de barras y Gráfico de dona).
+### Agregar Componente 2 (Gráfico de Dona):
 
-🟡 URGENCIA 2: La Presentación de Impacto / Pitch Deck (Opción 1)
-Prioridad: ALTA | Tiempo estimado: 5 a 6 horas
-Al ser un formato de Presentación + Demostración, el "storytelling" y la justificación de negocio definirán al ganador.
+- Haz clic en + Componente.
+- Selecciona el informe Informe: CFDI por Estatus y presiona Seleccionar.
+- En el panel derecho, elige el icono de Gráfico de dona.
+- Verifica que la métrica de valor sea Recuento de filas y el segmento sea Estatus Emision.
+- Haz clic en Agregar.
 
-1. Investigación de la Situación Actual (El "Problema"):
-   o Métrica de dolor: Tiempo promedio de espera presencial en tesorerías para aclaraciones y facturación (ej. 2 a 4 horas).
-   o Riesgo fiscal: Pérdidas por cobros dobles, errores manuales en emisión de CFDI y falta de trazabilidad en escalamientos.
-2. La Solución (Tu propuesta):
-   o Arquitectura Híbrida: IA Generativa (Agentforce Grounded) para la experiencia conversacional + Flujos Deterministas (Flow Builder) para la precisión fiscal cero alucinación.
-3. Impacto y ROI:
-   o Disminución del 70% en carga operativa presencial.
-   o Reducción a 0% en emisión de facturas sobre folios sin pagar.
-   o Trazabilidad auditable del 100% de las interacciones humanas.
-   🟢 URGENCIA 3: Página Web / Interfaz Visual (Opción 2 - Con Estrategia)
-   Prioridad: MEDIA-BAJA (Descartar desarrollo desde cero / Usar alternativa nativa) | Tiempo estimado: 1 hora
-   • ¿Por qué NO programar un sitio web externo con API desde cero?
-   Desarrollar una web personalizada, conectarle una API REST a Salesforce y agregarle componentes de voz en menos de 48 horas es una trampa de tiempo. Si la API falla por latencia o CORS durante la demo en vivo, destruirá la impecable calificación que ya tienes.
-   • La Solución Inteligente (Smart Shortcut):
-   Usa Salesforce Embedded Messaging (Chat Incrustado) en una página de Experience Cloud / LWR de Salesforce. Se activa en 15 minutos, te da una URL pública con aspecto de portal gubernamental moderno y el chat del agente ya corre ahí nativamente sin programar APIs.
-   📅 Plan de Acción para las Próximas 48 Horas
-   Día / Horario Foco Entregable Concreto
-   Hoy (Noche) Feedback de Evaluadores Configurar vista de Solicitud_CFDI**c y la Consola de Servicio con el registro de Log_de_Auditoria_IA**c para la continuidad humana.
-   Mañana (Mañana) Embedded Chat / Web Desplegar el agente en un sitio simple de Experience Cloud para tener la "página web" lista sin código.
-   Mañana (Tarde/Noche) Presentación (Pitch Deck) Diseñar diapositivas (Problema, Solución, Arquitectura, Demo y ROI).
-   Día previo (20 Ago) Ensayos y Live Demo Ensayar la presentación ajustando los tiempos exactos del speech y la navegación en Salesforce.
-   💡 Argumento de Venta para tu Presentación (Tu diferenciador)
-   "La mayoría de los agentes conversacionales fallan en el sector público porque alucinan datos financieros o transfieren conversaciones sin contexto. Nuestra propuesta resuelve esto mediante una Arquitectura Híbrida: Agentforce entiende al ciudadano, pero la lógica de negocio y las reglas fiscales son ejecutadas de forma determinista por Flow Builder, garantizando que nunca se emita un CFDI inválido ni se procese un pago duplicado, manteniendo siempre evidencia auditable y continuidad total hacia el ejecutivo humano."
+Finalizar:
 
-¿Comenzamos a estructurar el guion y el contenido de las diapositivas para la presentación?
+- Reorganiza los bloques arrastrándolos si deseas ajustar la maquetación.
+- Haz clic en Guardar y luego en Listo.
+
+## Paso 1: Crear Fórmulas de Flujo para los datos de la cita
+
+Fecha_Cita: Fórmulada como DATETIMEVALUE(TODAY() + 1) (asigna automáticamente el día siguiente).
+
+Link_Meet: Fórmula que concatene [https://meet.google.com/](https://meet.google.com/) + un código aleatorio o el Id del Log de Auditoría.
+
+## Paso 2: Diseñar una Plantilla de Texto HTML (Text Template)
+
+Crea un recurso dentro del flujo de tipo Plantilla de texto en formato HTML para darle un diseño profesional corporativo:
+
+Asunto: Confirmación de cita con especialista - Folio {!$Record.Name}
+
+Cuerpo:
+
+Hola,
+
+Hemos recibido tu solicitud de escalamiento por el motivo: {!$Record.Motivo_Escalamiento\_\_c}.
+
+Un agente humano dará seguimiento a tu caso. Hemos agendado una sesión de atención prioritaria:
+
+Fecha y Hora: {!Formula_Fecha_Cita}
+
+Enlace de acceso: Unirse a la sesión en Google Meet
+
+Saludos,
+
+Centro de Atención e Impuestos IA
+
+## Paso 3: Agregar la Acción "Enviar correo electrónico" en el Flujo
+
+En el flujo donde creas el registro de Log_de_Auditoria_IA\_\_c:
+
+Agrega el elemento Acción (Action).
+
+Selecciona Enviar correo electrónico (Send Email).
+
+Configura los parámetros:
+
+Cuerpo del correo: {!Plantilla_Texto_HTML}
+
+Asunto: Confirmación de atención humana - Folio {!$Record.Name}
+
+Dirección de correo del destinatario: {!$Record.Correo_Solicitante\_\_c}
+
+Procesar el cuerpo como HTML: Verdadero ($GlobalConstant.True)
