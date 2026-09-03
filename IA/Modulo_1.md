@@ -45,3 +45,5 @@ el resultado debe contextualizarse  y revisarse
 
 ![alt text](image.png)
 
+# Elementos y patrones de un agente
+![alt text](image-1.png)
